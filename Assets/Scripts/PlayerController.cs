@@ -50,19 +50,23 @@ public class PlayerController : MonoBehaviour
     {
         if (movementY >= 0.5)
         {
-            player.transform.position += Vector3.forward * speed * Time.deltaTime;
+            //Foward
+            player.transform.position += transform.forward * speed * Time.deltaTime;
         } 
         if (movementY <= -0.5)
         {
-            player.transform.position += Vector3.back * speed * Time.deltaTime;
+            //Back
+            player.transform.position += -transform.forward * speed * Time.deltaTime;
         }
         if (movementX >= 0.5)
         {
-            player.transform.position += Vector3.right * speed * Time.deltaTime;
+            //Right
+            player.transform.position += transform.right * speed * Time.deltaTime;
         } 
         if (movementX <= -0.5)
         {
-            player.transform.position += Vector3.left * speed * Time.deltaTime;
+            //Left
+            player.transform.position += -transform.right * speed * Time.deltaTime;
         }
     }
     
