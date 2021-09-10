@@ -7,45 +7,22 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public GameObject player;
-    public GameObject turrent;
-    
     public float speed;
-    public float angle;
     
     private float movementX;
     private float movementY;
-
-    private float rotateX;
+    
     private void Awake()
     {
         player = gameObject;
     }
-
+    
     void OnMove(InputValue movementValue)
     {
         Vector2 movementVector = movementValue.Get<Vector2>();
         movementX = movementVector.x;
         movementY = movementVector.y;
     }
-
-    void OnRotate(InputValue movementValue)
-    {
-        Vector2 movementVector = movementValue.Get<Vector2>();
-        rotateX = movementVector.x;
-    }
-    
-    void Rotation()
-    {
-        if (rotateX >= 0.5)
-        {
-            turrent.transform.Rotate(Vector3.up * angle * Time.deltaTime);
-        } 
-        if (rotateX<= -0.5)
-        {
-            turrent.transform.Rotate(Vector3.down * angle * Time.deltaTime);
-        }
-    }
-    
     void Movement()
     {
         if (movementY >= 0.5)
@@ -73,6 +50,5 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Movement();
-        Rotation();
     }
 }

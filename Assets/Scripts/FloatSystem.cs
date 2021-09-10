@@ -7,10 +7,10 @@ public class FloatSystem : MonoBehaviour
 {
     public float height;
     public GameObject tank;
-    
+
     private void Awake()
     {
-        transform.position = new Vector3(0, height, 0);
+        tank.transform.position = new Vector3(0, height, 0);
     }
 
     private void FixedUpdate()
@@ -18,9 +18,8 @@ public class FloatSystem : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
-            Debug.Log(hit.transform.localRotation.eulerAngles.x);
-            tank.transform.eulerAngles = new Vector3(hit.transform.localRotation.eulerAngles.x, hit.transform.localRotation.eulerAngles.y + height, hit.transform.localRotation.eulerAngles.z);
+            tank.transform.eulerAngles = new Vector3(hit.transform.localRotation.eulerAngles.x, hit.transform.localRotation.eulerAngles.y, hit.transform.localRotation.eulerAngles.z);
+            transform.position = new Vector3(transform.position.x, height + hit.point.y, transform.position.z);
         }
     }
 }
