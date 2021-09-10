@@ -18,7 +18,7 @@ public class FloatSystem : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
         {
-            tank.transform.eulerAngles = new Vector3(hit.transform.localRotation.eulerAngles.x, hit.transform.localRotation.eulerAngles.y, hit.transform.localRotation.eulerAngles.z);
+            tank.transform.eulerAngles = new Vector3(hit.transform.rotation.eulerAngles.x, hit.transform.rotation.eulerAngles.y, hit.transform.rotation.eulerAngles.z);
             transform.position = new Vector3(transform.position.x, height + hit.point.y, transform.position.z);
         }
     }
