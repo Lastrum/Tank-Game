@@ -12,11 +12,11 @@ public class Fire : MonoBehaviour
     void OnFire(InputValue movementVale)
     {
         RaycastHit hit;
-        if (Physics.Raycast(turrent.transform.position, transform.TransformDirection(Vector3.forward), out hit,
+        if (Physics.Raycast(turrent.transform.position, turrent.transform.forward,
+            out hit,
             Mathf.Infinity))
         {
             h = hit;
-            Debug.DrawRay(turrent.transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
             Debug.Log("[Fired] (Object Name: " + hit.collider.name + ") Object Tag: " + hit.collider.tag);
             
             if (hit.collider.CompareTag("Destructible"))
@@ -29,6 +29,6 @@ public class Fire : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Debug.DrawRay(turrent.transform.position, transform.TransformDirection(Vector3.forward) * h.distance, Color.red);
+        Debug.DrawRay(turrent.transform.position, turrent.transform.forward * h.distance, Color.red);
     }
 }
